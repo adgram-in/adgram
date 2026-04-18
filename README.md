@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Adgram
 
-## Getting Started
+Affiliate Product Website built using Next.js and Tailwind CSS.
 
-First, run the development server:
+## 🚀 About
 
-```bash
+Adgram is a modern, responsive affiliate product website designed with smooth animations and a clean UI. It focuses on performance, mobile optimization, and a premium user experience.
+
+## 🛠️ Tech Stack
+
+* Next.js
+* Tailwind CSS
+* TypeScript
+
+## 📦 Getting Started
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Fully responsive design
+* Smooth Apple-style animations
+* Dark / Light mode support
+* Optimized for performance
+* Affiliate product listing system
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This project is deployed using Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* app/ → Main application pages
+* components/ → UI components
+* public/ → Static assets
+* styles/ → Global styles
 
-## Deploy on Vercel
+## 📌 Note
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This is an affiliate-based project. External product links may redirect to third-party websites.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Made with ❤️ using Next.js
