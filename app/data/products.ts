@@ -3,6 +3,7 @@ export interface Product {
   title: string;
   image: string;
   link: string;
+  tag?: string;
   categories?: string[];
 }
 
@@ -48,5 +49,29 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71VwYL4NQEL._SX679_.jpg",
     link: "https://amzn.to/4dS8ohK",
     categories: ["Tech Gadgets", "Home Essentials", "Viral Products"]
+  },
+  {
+    id: 7,
+    title: "HD Earwax Remover",
+    image: "https://m.media-amazon.com/images/I/71mgS5byMAL._SX679_.jpg",
+    link: "https://amzn.to/4mKvdX0",
+    tag: "Deep Clean 🧼",
+    categories: ["Tech Gadgets", "Viral Products"]
+  },
+  {
+    id: 8,
+    title: "Blackhead/Whitehead Remover",
+    image: "https://m.media-amazon.com/images/I/41kUilb3FYL._SX522_.jpg",
+    link: "https://amzn.to/4tZOlCC",
+    tag: "Skin Care 🧴",
+    categories: ["Skin Care", "Viral Products"]
+  },
+  {
+    id: 9,
+    title: "Nose/Ear Hair Trimmer",
+    image: "https://m.media-amazon.com/images/I/71QKFjmrThL._SX679_.jpg",
+    link: "https://amzn.to/4tq6xW8",
+    tag: "Deep Clean 🧼",
+    categories: ["Tech Gadgets", "Skin Care", "Home Essentials", "Kitchen Finds", "Viral Products"]
   }
 ];

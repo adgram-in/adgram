@@ -250,8 +250,8 @@ export default function Home() {
               )
               .map((product, index) => {
 
-                const tags = ["💸 Under ₹999", "⚡ Must Have", "💡 Smart Pick", "🔥 Best Seller", "💸 Under ₹299", "💡 Smart Pick"];
-                const tag = tags[index];
+                const defaultTags = ["💸 Under ₹999", "⚡ Must Have", "💡 Smart Pick", "🔥 Best Seller", "💸 Under ₹299", "💡 Smart Pick"];
+                const tag = product.tag || defaultTags[index % defaultTags.length];
 
                 return (
                   <div key={product.id}
