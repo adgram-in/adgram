@@ -273,21 +273,42 @@ export default function Home() {
 
                       <img src={product.image} className="p-4 object-contain h-full" />
 
+                      {/* STAR RATING - Overlaid at bottom of image */}
+                      <div className="absolute bottom-2 left-2 flex items-center gap-0.5 bg-white/90 dark:bg-black/80 px-1.5 py-0.5 rounded">
+                        <span className="text-xs font-semibold text-amber-500">{product.rating}</span>
+                        <svg className="w-3 h-3 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                      </div>
+
                     </div>
 
                     {/* CONTENT */}
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold line-clamp-2">
+                      <h3 className="text-sm font-semibold line-clamp-2 mb-2">
                         {product.title}
                       </h3>
+
+                      {/* Price Display */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-base font-bold text-amber-600 dark:text-amber-400">
+                          ₹{product.price}
+                        </span>
+                        <span className="text-xs line-through text-gray-400">
+                          ₹{product.originalPrice}
+                        </span>
+                        <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
+                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                        </span>
+                      </div>
 
                       <a
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 block text-center bg-black text-white dark:bg-white dark:text-black py-2 rounded-xl text-sm font-medium hover:opacity-90 transition"
+                        className="mt-1 block text-center bg-black text-white dark:bg-white dark:text-black py-2 rounded-xl text-sm font-medium hover:opacity-90 transition"
                       >
-                        BUY NOW
+                        GET DEAL
                       </a>
                     </div>
 
