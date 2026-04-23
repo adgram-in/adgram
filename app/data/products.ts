@@ -73,5 +73,29 @@ export const products: Product[] = [
     link: "https://amzn.to/4tq6xW8",
     tag: "Deep Clean 🧼",
     categories: ["Tech Gadgets", "Skin Care", "Home Essentials", "Kitchen Finds", "Viral Products"]
+  },
+  {
+    id: 10,
+    title: "Electric Scrubber",
+    image: "https://m.media-amazon.com/images/I/61umY5qs8gL._SX569_.jpg",
+    link: "https://amzn.to/4cFEWJn",
+    tag: "⚡ Must Have",
+    categories: ["Tech Gadgets", "Viral Products", "Home Essentials"]
+  },
+  {
+    id: 11,
+    title: "Mini Electric Chopper",
+    image: "https://m.media-amazon.com/images/I/71z4h5dOKmL._SX569_.jpg",
+    link: "https://amzn.to/3QWrPMH",
+    tag: "💡 Smart Pick",
+    categories: ["Tech Gadgets", "Viral Products", "Kitchen Finds"]
+  },
+  {
+    id: 12,
+    title: "Mini Packet Sealer",
+    image: "https://m.media-amazon.com/images/I/51msQGb1FGL._SX569_.jpg",
+    link: "https://amzn.to/48L6iwE",
+    tag: "💡 Smart Pick",
+    categories: ["Tech Gadgets", "Viral Products", "Kitchen Finds"]
   }
 ];
