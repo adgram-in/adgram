@@ -13,6 +13,18 @@ type HeroProps = {
 export default function Hero({ searchQuery, setSearchQuery, selectedCategory, onCategoryChange }: HeroProps) {
   const categories = ["All", "Tech Gadgets", "Home Essentials", "Kitchen Finds", "Viral Products"];
 
+  const handleCategoryClick = (category: string) => {
+    onCategoryChange(category === "All" ? "" : category);
+    // Scroll to products section with offset for header visibility
+    const productsSection = document.getElementById("products");
+    if (productsSection) {
+      const headerOffset = 100; // Offset to show "Latest Drops" title
+      const elementPosition = productsSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="reveal min-h-[80vh] flex items-center justify-center text-center px-6 relative overflow-hidden">
 
@@ -41,7 +53,7 @@ export default function Hero({ searchQuery, setSearchQuery, selectedCategory, on
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => onCategoryChange(category === "All" ? "" : category)}
+              onClick={() => handleCategoryClick(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 (category === "All" && selectedCategory === "") || 
                 (category !== "All" && selectedCategory === category)
