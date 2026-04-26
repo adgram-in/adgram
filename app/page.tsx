@@ -26,12 +26,24 @@ export default function Home() {
   const [selectedLink, setSelectedLink] = useState("");
   const [navbarSearchOpen, setNavbarSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [priceSort, setPriceSort] = useState<"low-to-high" | "high-to-low" | "">("");
+  const itemsPerPage = 12;
   const headerRef = useRef<HTMLDivElement | null>(null);
   const categoriesRef = useRef<HTMLDivElement | null>(null);
   const mobileCategoriesRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const mobileContactRef = useRef<HTMLDivElement | null>(null);
   const searchRef = useRef<HTMLDivElement | null>(null);
+
+  // Loading simulation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Scroll reveal observer
   useEffect(() => {
@@ -106,6 +118,36 @@ export default function Home() {
     navigator.clipboard.writeText(selectedLink);
   };
 
+  // Reset to page 1 when search or category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory]);
+
+  // Filter and sort products
+  let filteredProducts = products.filter(p =>
+    p.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (!selectedCategory || p.categories?.includes(selectedCategory))
+  );
+
+  // Sort by price
+  if (priceSort === "low-to-high") {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+  } else if (priceSort === "high-to-low") {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  }
+
+  // Reset to page 1 when price sort changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [priceSort]);
+
+  // Paginate products
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <main className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0a] text-black dark:text-white transition">
 
@@ -123,17 +165,18 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => { setCategoriesOpen((prev) => !prev); setContactOpen(false); }}
-                className="inline-flex items-center gap-1"
+                className="inline-flex items-center gap-1 outline-none"
               >
                 Categories{selectedCategory ? ` (${selectedCategory})` : ""}
               </button>
               <div className={`absolute -left-2 top-full mt-2 w-48 rounded-2xl bg-white dark:bg-[#111] border border-black/10 dark:border-white/10 shadow-xl transition-all duration-300 ${categoriesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
-                <div className="flex flex-col p-3 gap-2">
-                  <button type="button" onClick={() => { setSelectedCategory(""); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">All</button>
-                  <button type="button" onClick={() => { setSelectedCategory("Tech Gadgets"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Tech Gadgets</button>
-                  <button type="button" onClick={() => { setSelectedCategory("Home Essentials"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Home Essentials</button>
-                  <button type="button" onClick={() => { setSelectedCategory("Kitchen Finds"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Kitchen Finds</button>
-                  <button type="button" onClick={() => { setSelectedCategory("Viral Products"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Viral Products</button>
+                <div className="flex flex-col p-2 gap-1">
+                  <button type="button" onClick={() => { setSelectedCategory(""); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">All</button>
+                  <button type="button" onClick={() => { setSelectedCategory("Tech"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Tech</button>
+                  <button type="button" onClick={() => { setSelectedCategory("Home"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Home</button>
+                  <button type="button" onClick={() => { setSelectedCategory("Kitchen"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Kitchen</button>
+                  <button type="button" onClick={() => { setSelectedCategory("Spa"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Spa</button>
+                  <button type="button" onClick={() => { setSelectedCategory("Viral"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Viral</button>
                 </div>
               </div>
             </div>
@@ -141,14 +184,14 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => { setContactOpen((prev) => !prev); setCategoriesOpen(false); }}
-                className="inline-flex items-center gap-1"
+                className="inline-flex items-center gap-1 outline-none"
               >
                 Contact
               </button>
               <div className={`absolute left-0 top-full mt-2 w-64 rounded-2xl bg-white dark:bg-[#111] border border-black/10 dark:border-white/10 shadow-xl transition-all duration-300 ${contactOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
-                <div className="flex flex-col p-3 gap-2">
-                  <a href="mailto:advertisementgram@gmail.com" className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">advertisementgram@gmail.com</a>
-                  <a href="tel:+919579714069" className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">+91 9579714069</a>
+                <div className="flex flex-col p-2 gap-1">
+                  <a href="mailto:advertisementgram@gmail.com" className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">advertisementgram@gmail.com</a>
+                  <a href="tel:+919579714069" className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">+91 9579714069</a>
                 </div>
               </div>
             </div>
@@ -208,10 +251,11 @@ export default function Home() {
               </button>
               <div className={`mt-2 space-y-1 rounded-2xl bg-white dark:bg-[#111] border border-black/10 dark:border-white/10 shadow-xl overflow-hidden transition-all duration-300 ${categoriesOpen ? 'block' : 'hidden'}`}>
                 <button type="button" onClick={() => { setSelectedCategory(""); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">All</button>
-                <button type="button" onClick={() => { setSelectedCategory("Tech Gadgets"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Tech Gadgets</button>
-                <button type="button" onClick={() => { setSelectedCategory("Home Essentials"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Home Essentials</button>
-                <button type="button" onClick={() => { setSelectedCategory("Kitchen Finds"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Kitchen Finds</button>
-                <button type="button" onClick={() => { setSelectedCategory("Viral Products"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Viral Products</button>
+                <button type="button" onClick={() => { setSelectedCategory("Tech"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Tech</button>
+                <button type="button" onClick={() => { setSelectedCategory("Home"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Home</button>
+                <button type="button" onClick={() => { setSelectedCategory("Kitchen"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Kitchen</button>
+                <button type="button" onClick={() => { setSelectedCategory("Spa"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Spa</button>
+                <button type="button" onClick={() => { setSelectedCategory("Viral"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Viral</button>
               </div>
             </div>
             <div ref={mobileContactRef} className="relative">
@@ -239,84 +283,141 @@ export default function Home() {
       {/* PRODUCTS */}
       <section id="products" className="mt-10 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="reveal text-2xl font-semibold mb-8">Latest Drops</h2>
+          <div className="flex flex-wrap items-center justify-between mb-8 gap-4">
+            <h2 className="reveal text-2xl font-semibold">Latest Drops</h2>
+            
+            {/* Price Filter */}
+            <select
+              value={priceSort}
+              onChange={(e) => setPriceSort(e.target.value as "low-to-high" | "high-to-low" | "")}
+              className="px-4 py-2 rounded-full border-0 bg-black/5 dark:bg-[#222] text-sm text-black dark:text-white outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition cursor-pointer appearance-none"
+              style={{ paddingRight: '2rem' }}
+            >
+              <option value="" className="bg-white dark:bg-[#222]">Sort by</option>
+              <option value="low-to-high" className="bg-white dark:bg-[#222]">Price: Low → High</option>
+              <option value="high-to-low" className="bg-white dark:bg-[#222]">Price: High → Low</option>
+            </select>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* SKELETON LOADING */}
+            {loading && Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#111] animate-pulse">
+                <div className="aspect-square bg-gray-200 dark:bg-gray-800" />
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-3/4" />
+                  <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-1/2" />
+                  <div className="h-10 bg-gray-200 dark:bg-gray-800 rounded-xl" />
+                </div>
+              </div>
+            ))}
 
-            {products
-              .filter(p =>
-                p.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                (!selectedCategory || p.categories?.includes(selectedCategory))
-              )
-              .map((product, index) => {
+            {!loading && paginatedProducts.map((product, index) => {
 
-                const defaultTags = ["💸 Under ₹999", "⚡ Must Have", "💡 Smart Pick", "🔥 Best Seller", "💸 Under ₹299", "💡 Smart Pick"];
-                const tag = product.tag || defaultTags[index % defaultTags.length];
+              const defaultTags = ["💸 Under ₹999", "⚡ Must Have", "💡 Smart Pick", "🔥 Best Seller", "💸 Under ₹299", "💡 Smart Pick"];
+              const tag = product.tag || defaultTags[index % defaultTags.length];
 
-                return (
-                  <div key={product.id}
-                    className="group rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#111] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-hover">
+              return (
+                <div key={product.id}
+                  className="group rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#111] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-hover">
 
-                    {/* IMAGE */}
-                    <div className="relative aspect-square bg-gray-100 dark:bg-white flex items-center justify-center">
+                  {/* IMAGE */}
+                  <div className="relative aspect-square bg-gray-100 dark:bg-white flex items-center justify-center">
 
-                      <span className="absolute top-3 left-3 text-xs bg-black text-white px-3 py-1 rounded-full">
-                        {tag}
-                      </span>
+                    <span className="absolute top-3 left-3 text-xs bg-black text-white px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
 
-                      <button
-                        onClick={() => openShare(product.link)}
-                        className="absolute top-3 right-3 bg-black/80 text-white p-2 rounded-full transition"
-                      >
-                        <Share2 size={16} />
-                      </button>
+                    <button
+                      onClick={() => openShare(product.link)}
+                      className="absolute top-3 right-3 bg-black/80 text-white p-2 rounded-full transition"
+                    >
+                      <Share2 size={16} />
+                    </button>
 
-                      <img src={product.image} className="p-4 object-contain h-full" />
+                    <img src={product.image} className="p-4 object-contain h-full" />
 
-                      {/* STAR RATING - Overlaid at bottom of image */}
-                      <div className="absolute bottom-2 left-2 flex items-center gap-0.5 bg-white/90 dark:bg-black/80 px-1.5 py-0.5 rounded">
-                        <span className="text-xs font-semibold text-amber-500">{product.rating}</span>
-                        <svg className="w-3 h-3 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                        </svg>
-                      </div>
-
-                    </div>
-
-                    {/* CONTENT */}
-                    <div className="p-4">
-                      <h3 className="text-sm font-semibold line-clamp-2 mb-2">
-                        {product.title}
-                      </h3>
-
-                      {/* Price Display */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-base font-bold text-amber-600 dark:text-amber-400">
-                          ₹{product.price}
-                        </span>
-                        <span className="text-xs line-through text-gray-400">
-                          ₹{product.originalPrice}
-                        </span>
-                        <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
-                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
-                        </span>
-                      </div>
-
-                      <a
-                        href={product.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-1 block text-center bg-black text-white dark:bg-white dark:text-black py-2 rounded-xl text-sm font-medium hover:opacity-90 transition"
-                      >
-                        GET DEAL
-                      </a>
+                    {/* STAR RATING - Overlaid at bottom of image */}
+                    <div className="absolute bottom-2 left-2 flex items-center gap-0.5 bg-white/90 dark:bg-black/80 px-1.5 py-0.5 rounded">
+                      <span className="text-xs font-semibold text-amber-500">{product.rating}</span>
+                      <svg className="w-3 h-3 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                      </svg>
                     </div>
 
                   </div>
-                );
-              })}
+
+                  {/* CONTENT */}
+                  <div className="p-4">
+                    <h3 className="text-sm font-semibold line-clamp-2 mb-2">
+                      {product.title}
+                    </h3>
+
+                    {/* Price Display */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-base font-bold text-amber-600 dark:text-amber-400">
+                        ₹{product.price}
+                      </span>
+                      <span className="text-xs line-through text-gray-400">
+                        ₹{product.originalPrice}
+                      </span>
+                      <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
+                        {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                      </span>
+                    </div>
+
+                    <a
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block text-center bg-black text-white dark:bg-white dark:text-black py-2 rounded-xl text-sm font-medium hover:opacity-90 transition"
+                    >
+                      GET DEAL
+                    </a>
+                  </div>
+
+                </div>
+              );
+            })}
 
           </div>
+
+          {/* PAGINATION */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-10">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-[#111] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/5 transition"
+              >
+                Prev
+              </button>
+              
+              <div className="flex gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-10 h-10 rounded-lg border border-black/10 dark:border-white/10 transition ${
+                      currentPage === page
+                        ? 'bg-black text-white dark:bg-white dark:text-black'
+                        : 'bg-white dark:bg-[#111] hover:bg-black/5 dark:hover:bg-white/5'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-[#111] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/5 transition"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

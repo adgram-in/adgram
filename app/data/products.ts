@@ -19,7 +19,7 @@ export const products: Product[] = [
     rating: 4.3,
     price: 899,
     originalPrice: 1999,
-    categories: ["Tech Gadgets", "Viral Products"]
+    categories: ["Tech", "Viral"]
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const products: Product[] = [
     rating: 4.1,
     price: 4628,
     originalPrice: 8882,
-    categories: ["Tech Gadgets", "Viral Products"]
+    categories: ["Tech", "Viral"]
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const products: Product[] = [
     rating: 4.5,
     price: 499,
     originalPrice: 999,
-    categories: ["Home Essentials", "Viral Products"]
+    categories: ["Home", "Viral"]
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ export const products: Product[] = [
     rating: 4.2,
     price: 449,
     originalPrice: 899,
-    categories: ["Tech Gadgets", "Kitchen Finds", "Home Essentials", "Viral Products"]
+    categories: ["Tech", "Kitchen", "Home", "Viral"]
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const products: Product[] = [
     rating: 4.4,
     price: 299,
     originalPrice: 999,
-    categories: ["Viral Products", "Kitchen Finds", "Home Essentials"]
+    categories: ["Viral", "Kitchen", "Home"]
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ export const products: Product[] = [
     rating: 4.6,
     price: 284,
     originalPrice: 999,
-    categories: ["Tech Gadgets", "Home Essentials", "Viral Products"]
+    categories: ["Tech", "Home", "Viral"]
   },
   {
     id: 7,
@@ -80,7 +80,7 @@ export const products: Product[] = [
     rating: 4.0,
     price: 998,
     originalPrice: 2499,
-    categories: ["Tech Gadgets", "Viral Products"]
+    categories: ["Tech", "Viral"]
   },
   {
     id: 8,
@@ -91,7 +91,7 @@ export const products: Product[] = [
     rating: 4.7,
     price: 299,
     originalPrice: 899,
-    categories: ["Skin Care", "Viral Products"]
+    categories: ["Skin Care", "Viral"]
   },
   {
     id: 9,
@@ -102,7 +102,7 @@ export const products: Product[] = [
     rating: 4.3,
     price: 698,
     originalPrice: 1499,
-    categories: ["Tech Gadgets", "Skin Care", "Home Essentials", "Kitchen Finds", "Viral Products"]
+    categories: ["Tech", "Skin Care", "Home", "Viral"]
   },
   {
     id: 10,
@@ -113,7 +113,7 @@ export const products: Product[] = [
     rating: 4.8,
     price: 555,
     originalPrice: 1290,
-    categories: ["Tech Gadgets", "Viral Products", "Home Essentials"]
+    categories: ["Tech", "Viral", "Home"]
   },
   {
     id: 11,
@@ -124,7 +124,7 @@ export const products: Product[] = [
     rating: 4.2,
     price: 899,
     originalPrice: 1499,
-    categories: ["Tech Gadgets", "Viral Products", "Kitchen Finds"]
+    categories: ["Tech", "Viral", "Kitchen"]
   },
   {
     id: 12,
@@ -135,6 +135,6 @@ export const products: Product[] = [
     rating: 4.5,
     price: 239,
     originalPrice: 399,
-    categories: ["Tech Gadgets", "Viral Products", "Kitchen Finds"]
+    categories: ["Tech", "Viral", "Kitchen"]
   }
 ];
