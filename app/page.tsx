@@ -175,7 +175,6 @@ export default function Home() {
                   <button type="button" onClick={() => { setSelectedCategory("Tech"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Tech</button>
                   <button type="button" onClick={() => { setSelectedCategory("Home"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Home</button>
                   <button type="button" onClick={() => { setSelectedCategory("Kitchen"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Kitchen</button>
-                  <button type="button" onClick={() => { setSelectedCategory("Spa"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Spa</button>
                   <button type="button" onClick={() => { setSelectedCategory("Viral"); setCategoriesOpen(false); }} className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none">Viral</button>
                 </div>
               </div>
@@ -254,7 +253,6 @@ export default function Home() {
                 <button type="button" onClick={() => { setSelectedCategory("Tech"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Tech</button>
                 <button type="button" onClick={() => { setSelectedCategory("Home"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Home</button>
                 <button type="button" onClick={() => { setSelectedCategory("Kitchen"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Kitchen</button>
-                <button type="button" onClick={() => { setSelectedCategory("Spa"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Spa</button>
                 <button type="button" onClick={() => { setSelectedCategory("Viral"); setCategoriesOpen(false); }} className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Viral</button>
               </div>
             </div>

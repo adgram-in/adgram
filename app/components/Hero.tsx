@@ -11,7 +11,7 @@ type HeroProps = {
 };
 
 export default function Hero({ searchQuery, setSearchQuery, selectedCategory, onCategoryChange }: HeroProps) {
-  const categories = ["All", "Tech", "Home", "Kitchen", "Spa", "Viral"];
+  const categories = ["All", "Tech", "Home", "Kitchen", "Viral"];
 
   const handleCategoryClick = (category: string) => {
     onCategoryChange(category === "All" ? "" : category);
@@ -45,7 +45,7 @@ export default function Hero({ searchQuery, setSearchQuery, selectedCategory, on
 
         {/* Category Bar */}
         <motion.div
-          className="mt-4 flex gap-2 justify-center flex-wrap"
+          className="mt-4 flex gap-3 justify-center flex-wrap"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
