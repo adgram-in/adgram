@@ -34,7 +34,7 @@ export const products: Product[] = [
   {
     id: 3,
     title: "Folding Stool",
-    image: "https://m.media-amazon.com/images/I/51+8-8D-iL._SX679_.jpg",
+    image: "https://m.media-amazon.com/images/I/51+8-S8D-iL._SX522_.jpg",
     link: "https://www.amazon.in/GCI-Outdoor-Portable-Foldable-Lightweight/dp/B0GW7YZBRF?content-id=amzn1.sym.7e2c8ac4-9f12-4bcd-9 497-a8ae54bc8764%3Aamzn1.sym.7e2c8ac4-9f12-4bcd-9 497-a8ae54bc8764&crid=49TLRJXCWFJY&cv_ct_cx=foldable%2Bpurse%2Bstool&keywords=foldable%2Bpurse%2Bstool&pd_rd_i=B0GW7YZBRF&pd_rd_r=0476c794-fcb0-4ef3-aea1-be881e53eb12&pd_rd_w=En68N&pd_rd_wg=MUyy9&pf_rd_p=7e2c8ac4-9f12-4bcd-9 497-a8ae54bc8764&pf_rd_r=2DJC4ASF3WCCS29TMEMK&qid=1776347458&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=foldable%2Bpurse%2Bsool%2Caps%2C719&sr=1-1-66673dcf-083f-43ba-b 782-d4a436cc5cfb-sponse&aref=eEEPGGOgd3&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1&linkCode=ll2&tag=adgram00-21&linkId=97b5052d97d7d0f1d88ca88087bee12f&ref_=as_li_ss_tl",
     rating: 4.5,
     price: 499,
@@ -144,7 +144,7 @@ export const products: Product[] = [
     link: "https://www.amazon.in/gp/product/B09RVJ54V5?smid=A1B09NHTAUCIPF&th=1&linkCode=ll2&tag=adgram00-21&linkId=8ac25258a38ca30a45f7a46c1dd59a46&ref_=as_li_ss_tl",
     tag: "💸 Under ₹399",
     rating: 4.3,
-    price: 380.99,
+    price: 380,
     originalPrice: 1499,
     categories: ["all", "viral", "kitchen", "Home"]
   },

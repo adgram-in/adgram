@@ -467,6 +467,7 @@ export default function Home() {
         </div>
       )}
 
+      <div className="py-8" />
       <Footer />
 
     </main>
