@@ -33,15 +33,17 @@ export default function Hero({ searchQuery, setSearchQuery, selectedCategory, on
 
       <div className="relative max-w-xl w-full">
 
-        {/* Title */}
-        <motion.h1
+        {/* ADGRAM Text */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-4xl md:text-5xl font-extrabold tracking-tight"
+          className="my-4"
         >
-          ADGRAM
-        </motion.h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider">
+            ADGRAM
+          </h1>
+        </motion.div>
 
         {/* Category Bar */}
         <motion.div

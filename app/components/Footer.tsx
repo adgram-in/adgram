@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 
 export function Footer() {
+  const currentYear = 2026; // Fixed year to avoid hydration mismatch
+
   return (
     <footer className="reveal border-t border-black/10 dark:border-white/10 px-6 py-12 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
 
@@ -18,7 +20,7 @@ export function Footer() {
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-bold tracking-widest">ADGRAM</h2>
           <p className="text-black/60 dark:text-white/60 text-sm mt-2 transition-colors duration-300">
-            © {new Date().getFullYear()} ADGRAM. All rights reserved.
+            © {currentYear} ADGRAM. All rights reserved.
           </p>
         </div>
 

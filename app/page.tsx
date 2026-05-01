@@ -17,7 +17,13 @@ export default function Home() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem("theme");
+      return saved !== "light";
+    }
+    return true;
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -29,6 +35,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [priceSort, setPriceSort] = useState<"low-to-high" | "high-to-low" | "">("");
+  const [mounted, setMounted] = useState(false);
   const itemsPerPage = 12;
   const headerRef = useRef<HTMLDivElement | null>(null);
   const categoriesRef = useRef<HTMLDivElement | null>(null);
@@ -36,6 +43,11 @@ export default function Home() {
   const contactRef = useRef<HTMLDivElement | null>(null);
   const mobileContactRef = useRef<HTMLDivElement | null>(null);
   const searchRef = useRef<HTMLDivElement | null>(null);
+
+  // Set mounted state after hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Loading simulation
   useEffect(() => {
