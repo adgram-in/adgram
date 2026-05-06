@@ -169,5 +169,49 @@ export const products: Product[] = [
     price: 999,
     originalPrice: 1899,
     categories: ["all", "viral", "Home"]
+  },
+  {
+    id: 16,
+    title: "3 in 1 Duel Wireless Mic",
+    image: "https://m.media-amazon.com/images/I/71WHCLB3cCL._SX522_.jpg",
+    link: "https://www.amazon.in/gp/product/B0F93FP9MZ?smid=A21Z6N8T49H0P6&th=1&linkCode=ll2&tag=adgram00-21&linkId=ed7651d9516c87dded3465bb620106d1&ref_=as_li_ss_tl",
+    tag: "🏆 Editor’s Choice",
+    rating: 4.6,
+    price: 1999,
+    originalPrice: 2999,
+    categories: ["all", "viral", "tech"]
+  },
+  {
+    id: 17,
+    title: "3 in 1 Single Wirelesss Mic",
+    image: "https://m.media-amazon.com/images/I/513-QkQX1EL._SX522_.jpg",
+    link: "https://www.amazon.in/gp/product/B0GMDMXN32?smid=A1FV0ABE4XY4FN&th=1&linkCode=ll2&tag=adgram00-21&linkId=d4a496eced45a95dc805e5791681eb22&ref_=as_li_ss_tl",
+    tag: "🏆 Editor’s Choice",
+    rating: 4.9,
+    price: 899,
+    originalPrice: 1999,
+    categories: ["all", "viral", "tech"]
+  },
+  {
+    id: 18,
+    title: "Mini Electric Shaver",
+    image: "https://m.media-amazon.com/images/I/711J8XowpOL._SX522_.jpg",
+    link: "https://www.amazon.in/gp/product/B0GTL7SKYK?smid=A3N9W8WT4K8S5B&th=1&linkCode=ll2&tag=adgram00-21&linkId=820e2ea71b8a17bbc32048199c414c38&ref_=as_li_ss_tl",
+    tag: "💡 Smart Pick",
+    rating: 4.5,
+    price: 369,
+    originalPrice: 999,
+    categories: ["all", "viral", "tech", "home"]
+  },
+  {
+    id: 19,
+    title: "Premium Lint Remover",
+    image: "https://m.media-amazon.com/images/I/71s0in5TMXL._SX522_.jpg",
+    link: "https://www.amazon.in/Nova-Lint-Remover-Clothes-Warranty/dp/B0DFCY1PPB?dib=eyJ2IjoiMSJ9.iD8xDEtWf_7XJ4Xfq6oE37fgLwYb9HiLiUBQ239rno6_xKZq87mcofrlfQFDFejxegCIPodb0fm_s-ZPM_VGVVUT9s2YJD403OPLrA8hIb3PnIjrWxC_oYTCD83Kkn7ofyuxknoeDWiwX7iJss7jMcb0X95SRB4xLGTEgzsQWv1J7cFKTIuGQg9pWAsjjz23pm1FujoW3CwTUE2y-YgTwpvkUtw0BGuE-QLmEmz60sE.jst0uIUrpa1xziXW3PHgYwLuRCith_4cOr2rJk6to78&dib_tag=se&keywords=lint%2Bremover%2Bwith%2Bsteamer&qid=1778063380&sr=8-3&th=1&linkCode=ll2&tag=adgram00-21&linkId=c3bc47efa3465e1d4d672800c13b49ab&ref_=as_li_ss_tl",
+    tag: "⚡ Must Have",
+    rating: 4.5,
+    price: 310,
+    originalPrice: 999,
+    categories: ["all", "viral", "tech", "home"]
   }
 ];
