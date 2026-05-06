@@ -17,13 +17,17 @@ export default function Home() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem("theme");
-      return saved !== "light";
+  const [darkMode, setDarkMode] = useState(false);
+  // Sync theme from localStorage after component mounts to avoid hydration mismatch
+  useEffect(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem("theme") : null;
+    if (saved) {
+      setDarkMode(saved !== "light");
+    } else {
+      // Default to dark mode if no preference saved
+      setDarkMode(true);
     }
-    return true;
-  });
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -241,7 +245,7 @@ export default function Home() {
                 onClick={() => setDarkMode(prev => !prev)}
                 className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition"
               >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                {mounted ? (darkMode ? <Sun size={18} /> : <Moon size={18} />) : <Moon size={18} />}
               </button>
             </div>
           </div>

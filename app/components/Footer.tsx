@@ -13,25 +13,33 @@ export function Footer() {
 
   return (
     <footer className="reveal border-t border-black/10 dark:border-white/10 px-6 py-12 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
-
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-
-        {/* LEFT */}
+        {/* LEFT: About Us */}
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-bold tracking-widest">ADGRAM</h2>
           <p className="text-black/60 dark:text-white/60 text-sm mt-2 transition-colors duration-300">
-            © {currentYear} ADGRAM. All rights reserved.
+            Platform that shares trending and useful products, tools and deals.
+          </p>
+          <p className="text-black/60 dark:text-white/60 text-sm mt-2 transition-colors duration-300">
+            Business Inquiries & Collaborations:{" "}
+            <a
+              href="mailto:advertisementgram@gmail.com"
+              className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+            >
+              advertisementgram@gmail.com
+            </a>
+          </p>
+          <p className="text-black/60 dark:text-white/60 text-sm mt-2 transition-colors duration-300">
+            <a href="/privacy-policy" className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300">Privacy Policy</a>
           </p>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT: Follow Us */}
         <div className="text-center md:text-right">
           <p className="mb-4 font-medium text-black/70 dark:text-white/70 transition-colors duration-300">
-            Follow us for daily finds
+            Warud - 444906, Maharashtra, India
           </p>
-
           <div className="flex items-center justify-center md:justify-end gap-3">
-
             {[FaInstagram, FaYoutube, FaFacebook, FaPinterest, FaTwitter].map((Icon, i) => {
               const links = [
                 "https://insta.openinapp.co/wl5e8",
@@ -53,10 +61,19 @@ export function Footer() {
                 </a>
               );
             })}
-
           </div>
+          {/* Affiliate Disclosure moved to right side below social handles */}
+          <p className="text-black/60 dark:text-white/60 text-sm mt-2 transition-colors duration-300">
+            <a href="/affiliate-disclosure" className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300">Affiliate Disclosure</a>
+          </p>
         </div>
+      </div>
 
+      {/* Bottom Section: Centered Copyright */}
+      <div className="text-center mt-8 pt-8 border-t border-black/10 dark:border-white/10">
+        <p className="text-black/60 dark:text-white/60 text-sm transition-colors duration-300">
+          © {currentYear} ADGRAM. All rights reserved.
+        </p>
       </div>
     </footer>
   );
