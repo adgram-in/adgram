@@ -17,7 +17,7 @@ import {
   FaTwitter
 } from "react-icons/fa";
 
-export default function PrivacyPolicy() {
+export default function AffiliateDisclosure() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -81,25 +81,20 @@ export default function PrivacyPolicy() {
 
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
-          <button
-            onClick={() => setSelectedCategory("")}
+          <a
+            href="/"
             className="text-lg font-bold tracking-widest hover:opacity-75 transition"
           >
-            <a href="/">ADGRAM</a>
-          </button>
+            ADGRAM
+          </a>
 
           <nav className="hidden md:flex gap-8 text-sm text-gray-600 dark:text-gray-300 items-center">
 
-            <a href="/" onClick={() => setSelectedCategory("")}>
-              Home
-            </a>
+            <a href="/">Home</a>
 
-            <a href="/#products">
-              Products
-            </a>
+            <a href="/#products">Products</a>
 
             <div ref={categoriesRef} className="relative">
-
               <button
                 type="button"
                 onClick={() => {
@@ -114,17 +109,6 @@ export default function PrivacyPolicy() {
               <div className={`absolute -left-2 top-full mt-2 w-48 rounded-2xl bg-white dark:bg-[#111] border border-black/10 dark:border-white/10 shadow-xl transition-all duration-300 ${categoriesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
 
                 <div className="flex flex-col p-2 gap-1">
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedCategory("");
-                      setCategoriesOpen(false);
-                    }}
-                    className="text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition outline-none"
-                  >
-                    All
-                  </button>
 
                   <button
                     type="button"
@@ -208,11 +192,11 @@ export default function PrivacyPolicy() {
                 </div>
               </div>
             </div>
+
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
 
-            {/* Mobile: Menu button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden p-2"
@@ -220,7 +204,6 @@ export default function PrivacyPolicy() {
               <Menu size={20} />
             </button>
 
-            {/* Search + Theme */}
             <div ref={searchRef} className="flex items-center gap-2">
 
               <button
@@ -262,25 +245,11 @@ export default function PrivacyPolicy() {
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 flex flex-col gap-4">
 
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedCategory("");
-                setMenuOpen(false);
-                setCategoriesOpen(false);
-              }}
-              className="text-left"
-            >
-              <a href="/">Home</a>
-            </button>
+            <a href="/" className="text-left">
+              Home
+            </a>
 
-            <a
-              href="/#products"
-              onClick={() => {
-                setMenuOpen(false);
-                setCategoriesOpen(false);
-              }}
-            >
+            <a href="/#products">
               Products
             </a>
 
@@ -299,58 +268,19 @@ export default function PrivacyPolicy() {
 
               <div className={`mt-2 space-y-1 rounded-2xl bg-white dark:bg-[#111] border border-black/10 dark:border-white/10 shadow-xl overflow-hidden transition-all duration-300 ${categoriesOpen ? 'block' : 'hidden'}`}>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory("");
-                    setCategoriesOpen(false);
-                  }}
-                  className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
-                >
-                  All
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory("Tech");
-                    setCategoriesOpen(false);
-                  }}
-                  className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
-                >
+                <button className="w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5">
                   Tech
                 </button>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory("Home");
-                    setCategoriesOpen(false);
-                  }}
-                  className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
-                >
+                <button className="w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5">
                   Home
                 </button>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory("Kitchen");
-                    setCategoriesOpen(false);
-                  }}
-                  className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
-                >
+                <button className="w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5">
                   Kitchen
                 </button>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory("Viral");
-                    setCategoriesOpen(false);
-                  }}
-                  className="w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
-                >
+                <button className="w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5">
                   Viral
                 </button>
 
@@ -374,22 +304,14 @@ export default function PrivacyPolicy() {
 
                 <a
                   href="mailto:advertisementgram@gmail.com"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setMobileContactOpen(false);
-                  }}
-                  className="block w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
+                  className="block w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5"
                 >
                   advertisementgram@gmail.com
                 </a>
 
                 <a
                   href="tel:+919579714069"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setMobileContactOpen(false);
-                  }}
-                  className="block w-full text-left text-sm text-gray-700 dark:text-gray-200 rounded-xl px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition"
+                  className="block w-full text-left text-sm px-3 py-2 hover:bg-black/5 dark:hover:bg-white/5"
                 >
                   +91 9579714069
                 </a>
@@ -399,15 +321,16 @@ export default function PrivacyPolicy() {
 
           </div>
         )}
+
       </header>
 
-      {/* PRIVACY POLICY */}
+      {/* AFFILIATE DISCLOSURE */}
       <section className="flex-1 px-6 py-16">
 
         <div className="max-w-4xl mx-auto">
 
           <h1 className="text-4xl font-bold mb-8 border-b border-black/10 dark:border-white/10 pb-4">
-            Privacy Policy
+            Affiliate Disclosure
           </h1>
 
           <p className="text-gray-500 dark:text-gray-400 mb-10">
@@ -417,97 +340,56 @@ export default function PrivacyPolicy() {
           <div className="space-y-10 text-gray-700 dark:text-gray-300 leading-8">
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Introduction
-              </h2>
-
               <p>
-                At Adgram (
-                <a
-                  href="https://adgram-in.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  https://adgram-in.vercel.app
-                </a>
-                ), we value your privacy and are committed to protecting your personal information.
+                Adgram is a participant in various affiliate marketing programs,
+                including Cuelinks.
+              </p>
+
+              <p className="mt-4">
+                This means that we may earn a commission when you click on
+                affiliate links and make a purchase, at no additional cost to you.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Information We Collect
+                Our Commitment
               </h2>
 
               <ul className="list-disc pl-6 space-y-2">
-                <li>Name and email (if you contact us)</li>
-                <li>Browser type, device, and usage data (via analytics tools)</li>
+                <li>
+                  We only recommend products and services that we believe are useful and valuable to our audience.
+                </li>
+
+                <li>
+                  Our reviews and recommendations are based on research, trends, and user value, not just commissions.
+                </li>
               </ul>
             </div>
 
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                How We Use Your Information
-              </h2>
-
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Improve our website and content</li>
-                <li>Respond to user queries</li>
-                <li>Analyze traffic and user behavior</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Cookies
+                Transparency
               </h2>
 
               <p>
-                Our website may use cookies to enhance user experience and track website performance.
-                You can disable cookies through your browser settings.
+                Affiliate links may be included in our content, product pages,
+                and recommendations.
+              </p>
+
+              <p className="mt-4">
+                We strive to be transparent and honest in all our recommendations.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Third-Party Services
+                Contact
               </h2>
 
               <p>
-                We may use third-party services such as analytics tools and affiliate networks.
-                These services may collect data in accordance with their own privacy policies.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Data Protection
-              </h2>
-
-              <p>
-                We take reasonable steps to protect your information but cannot guarantee complete security.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Changes to This Policy
-              </h2>
-
-              <p>
-                We may update this Privacy Policy at any time.
-                Changes will be reflected on this page.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Contact Us
-              </h2>
-
-              <p>
-                If you have any questions, contact us at:
+                If you have any questions regarding this disclosure,
+                feel free to contact us at:
               </p>
 
               <p className="mt-4">
@@ -544,6 +426,7 @@ export default function PrivacyPolicy() {
 
             <p className="text-black/60 dark:text-white/60 text-sm mt-2">
               Business Inquiries & Collaborations:{" "}
+
               <a
                 href="mailto:advertisementgram@gmail.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
