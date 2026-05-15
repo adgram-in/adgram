@@ -213,5 +213,16 @@ export const products: Product[] = [
     price: 310,
     originalPrice: 999,
     categories: ["all", "viral", "tech", "home"]
+  },
+  {
+    id: 20,
+    title: "Silicone Suction Phone Holder",
+    image: "https://m.media-amazon.com/images/I/71inSfUXG4L._SX522_.jpg",
+    link: "https://www.amazon.in/Like-Silicone-Multi-Purpose-Hands-Free-Accessory/dp/B0F89314KG?crid=31OBEY7KZP14X&dib=eyJ2IjoiMSJ9._TtI15zM_dun0mb7mLRot7qwOGqqUX_qVeVQBWoM2Uso2Pnww1bZW-jglCkOq67seIZpsyEE2zhAu8ArWXEqYFXFw5gydYeCdSVvTBY7YyB6_k1ZEhhk-w-Bz-wnL3pX8vJo19Hm_wuA33PmWpL5X2imobLIoO4JFnhx4pD0ILFXJCds0qF65XK9Dz-ce_ii2u4_dk3Y1EnbgAld1bzeB_0dG4TYbxq_72nZEBHKC4I.i6ZKiKOe4Unr5zEQWLs5CxuEuWrllCk9rzDRJfUSP-E&dib_tag=se&keywords=SILICONE%2BMOBILE%2BHOLDER&qid=1778836975&refinements=p_72%3A1318476031&rnid=1318475031&sprefix=silicone%2Bmobile%2Bho%2Caps%2C502&sr=8-1-spons&aref=JnDsTqCBT7&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll2&tag=adgram00-21&linkId=9b5edbd5c167070b534dec7459e89ca1&ref_=as_li_ss_tl",
+    tag: "🏆 Editor’s Choice",
+    rating: 4.4,
+    price: 123,
+    originalPrice: 499,
+    categories: ["all", "viral", "tech", "home"]
   }
 ];

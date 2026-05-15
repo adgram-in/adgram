@@ -1,6 +1,9 @@
+import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
+import { Analytics } from "@vercel/analytics/react";
+
+export const metadata: Metadata = {
   title: "ADGRAM",
   description: "Discover Viral Amazon Finds",
 };
@@ -19,8 +22,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
+
       <body className="bg-white text-black dark:bg-black dark:text-white transition-colors">
         {children}
+
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
